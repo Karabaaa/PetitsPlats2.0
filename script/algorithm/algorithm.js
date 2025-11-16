@@ -1,7 +1,11 @@
-// Normalisation de texte : minuscules + trim.
-// Tu peux ajouter la suppression des accents si besoin.
+// Normalisation de texte : minuscules + trim + suppression des accents.
 function normalizeText(text) {
-  return text.toString().trim().toLowerCase();
+  return text
+    .toString()
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
 }
 
 // Vérifie si un texte contient la requête normalisée
