@@ -57,3 +57,15 @@ function recipeTemplate(recipe) {
     getRecipeCardDOM,
   };
 }
+
+// Crée le DOM du tag sélectionné
+function createTagElement(name, category) {
+  return `
+  <div class="tag tag-${category}"">
+    <span>${name}</span>
+    <button class="btn tag-close" data-name="${name}" data-category="${category}" aria-label="Supprimer ce tag">
+      <i class="bi bi-x fs-3"></i>
+    </button>
+  </div>
+  `;
+}
