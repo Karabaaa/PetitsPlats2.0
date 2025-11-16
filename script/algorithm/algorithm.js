@@ -13,11 +13,6 @@ function textMatchesQuery(text, normalizedQuery) {
   return normalizeText(text).includes(normalizedQuery);
 }
 
-// La recherche principale se lance à partir de 3 caractères
-function isQueryTooShort(query) {
-  return normalizeText(query).length < 3;
-}
-
 // Recherche de recettes avec des boucles for
 function searchRecipesWithLoops(recipes, query) {
   const normalizedQuery = normalizeText(query);
