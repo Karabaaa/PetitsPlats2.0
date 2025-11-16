@@ -1,23 +1,6 @@
 const searchButton = document.getElementById("search-button");
 const searchIcon = document.querySelector(".bi-search");
-searchButton.addEventListener("click", function () {
-  searchButton.classList.toggle("search-btn-active");
-  searchIcon.classList.toggle("text-white");
-});
-
-//console.log(recipes);
-
-async function init() {
-  recipes.forEach((recipe) => {
-    const recipeModel = recipeTemplate(recipe);
-    const recipeCard = recipeModel.getRecipeCardDOM();
-    document.querySelector(".recipes-container").innerHTML += recipeCard;
-  });
-
-  fillAllDropdowns();
-}
-
-init();
+const searchInput = document.getElementById("search-input");
 
 function populateDropdownItems(selector, items) {
   const container = document.querySelector(selector);
@@ -58,3 +41,56 @@ function fillAllDropdowns() {
     getUniqueSortedList(ustensils)
   );
 }
+
+// Fonction d'initialisation
+async function init() {
+  recipes.forEach((recipe) => {
+    const recipeModel = recipeTemplate(recipe);
+    const recipeCard = recipeModel.getRecipeCardDOM();
+    document.querySelector(".recipes-container").innerHTML += recipeCard;
+  });
+  fillAllDropdowns();
+  updateRecipeCount(recipes.length);
+}
+
+// Fonction centrale de recherche
+function runSearch(query) {
+  const filteredRecipes = searchRecipesWithLoops(recipes, query);
+  const container = document.querySelector(".recipes-container");
+  container.innerHTML = "";
+  filteredRecipes.forEach((recipe) => {
+    const recipeModel = recipeTemplate(recipe);
+    const recipeCard = recipeModel.getRecipeCardDOM();
+    container.innerHTML += recipeCard;
+  });
+  updateRecipeCount(filteredRecipes.length);
+}
+
+// Met à jour dynamiquement le nombre de recettes
+function updateRecipeCount(count) {
+  const subtitle = document.querySelector(".subtitle");
+  const displayCount = count < 10 ? `0${count}` : count;
+  subtitle.textContent = `${displayCount} recette${count === 1 ? "" : "s"}`;
+}
+
+// Animation couleur bouton recherche + recherche explicite
+searchButton.addEventListener("click", function () {
+  searchButton.classList.toggle("search-btn-active");
+  searchIcon.classList.toggle("text-white");
+  runSearch(searchInput.value);
+});
+
+// Bouton clear : vide l'input et réaffiche toutes les recettes
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", function () {
+  searchInput.value = "";
+  runSearch("");
+});
+
+// Recherche en direct sur l'input principal
+searchInput.addEventListener("input", (event) => {
+  runSearch(event.target.value);
+});
+
+// Lancement de l'app
+init();
