@@ -223,6 +223,12 @@ article h4 {
 
 .dropdown-item {
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
@@ -389,4 +395,14 @@ color:var(--color-black)
 
 .tag span {
   flex:1
+}
+
+.selected-dropdown-item {
+  background-color: var(--color-yellow);
+  font-weight: 700;
+  cursor: default;
+}
+
+.dropdown-tag-remove {
+  cursor: pointer;
 }
