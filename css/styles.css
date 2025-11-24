@@ -374,7 +374,6 @@ color:var(--color-black)
   height: 53px;
   border-radius: 10px;
   padding: 17px;
-  gap: 60px;
   background-color: var(--color-yellow);
   display:flex;
   align-items: center;
@@ -386,4 +385,8 @@ color:var(--color-black)
   background: none;
   padding: 0;
   color: var(--color-black)
+}
+
+.tag span {
+  flex:1
 }

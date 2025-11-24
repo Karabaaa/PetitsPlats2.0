@@ -68,9 +68,8 @@ function filterByTags(recipes, selectedTags) {
     const ustensilsOK =
       ustensils.length === 0 ||
       ustensils.every((tag) =>
-        recipe.ustensils.some(
-          (ustensil) => textMatchesQuery(ustensil),
-          normalizeText(tag)
+        recipe.ustensils.some((ustensil) =>
+          textMatchesQuery(ustensil, normalizeText(tag))
         )
       );
 
@@ -80,10 +79,13 @@ function filterByTags(recipes, selectedTags) {
 
 // Combiner recherche principale + tags
 function getFilteredRecipes(allRecipes, query, selectedTags) {
+  if (!query) {
+    const finalResults = filterByTags(allRecipes, selectedTags);
+    return finalResults;
+  }
   // 1. Recherche principale (boucles ou fonctionnel)
   const baseResults = searchRecipesWithFunctions(allRecipes, query);
   // const baseResults = searchRecipesWithLoops(allRecipes, query);
-
   // 2. Filtrage par tags
   const finalResults = filterByTags(baseResults, selectedTags);
 
