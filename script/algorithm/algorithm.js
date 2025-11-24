@@ -33,7 +33,6 @@ function searchRecipesWithLoops(recipes, query) {
       normalizedQuery
     );
 
-    // On construit une chaîne de tous les ingrédients OU
     // on fait la vérification dans une autre boucle
     let ingredientsMatch = false;
     for (let j = 0; j < recipe.ingredients.length; j++) {
