@@ -47,7 +47,7 @@ function filterByTags(recipes, selectedTags) {
   const { ingredients, appliances, ustensils } = selectedTags;
 
   return recipes.filter((recipe) => {
-    // INGREDIENTS : chaque tag doit apparaître dans les ingrédients (ou aucun tag = tout passe)
+    // INGREDIENTS : chaque tag doit apparaître dans les ingrédients, si aucun tag sélectionné => OK par défaut
     const ingredientsOK =
       ingredients.length === 0 ||
       ingredients.every((tag) =>
@@ -56,8 +56,7 @@ function filterByTags(recipes, selectedTags) {
         )
       );
 
-    // APPAREIL : en général, un seul appareil par recette
-    // Si aucun tag appareil sélectionné => OK par défaut
+    // APPAREIL : un seul appareil par recette, si aucun tag sélectionné => OK par défaut
     const applianceOK =
       appliances.length === 0 ||
       appliances.some((tag) =>
@@ -83,10 +82,7 @@ function getFilteredRecipes(allRecipes, query, selectedTags) {
     const finalResults = filterByTags(allRecipes, selectedTags);
     return finalResults;
   }
-  // 1. Recherche principale (boucles ou fonctionnel)
   const baseResults = searchRecipesWithFunctions(allRecipes, query);
-  // const baseResults = searchRecipesWithLoops(allRecipes, query);
-  // 2. Filtrage par tags
   const finalResults = filterByTags(baseResults, selectedTags);
 
   return finalResults;

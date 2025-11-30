@@ -40,14 +40,11 @@
           id="search-input"
           placeholder="Rechercher une recette. un ingrédient..."
         />
-        <button id="clear-button" class="btn">
-          <i
-            class="bi bi-x fs-2 clear-icon"
-            aria-label="Effacer la recherche"
-          ></i>
+        <button id="clear-button" class="btn" aria-label="Effacer la recherche">
+          <i class="bi bi-x fs-2 clear-icon"></i>
         </button>
-        <button id="search-button" class="btn">
-          <i class="bi bi-search fs-3 text-white" aria-label="Rechercher"></i>
+        <button id="search-button" class="btn" aria-label="Rechercher">
+          <i class="bi bi-search fs-3 text-white"></i>
         </button>
       </div>
     </header>
@@ -63,7 +60,7 @@
               Ingrédients <i class="bi bi-chevron-down"></i>
             </button>
             <ul class="dropdown-menu">
-              <div class="search-bar-dropdown">
+              <li class="search-bar-dropdown">
                 <input
                   type="text"
                   id="search-input-ingredients"
@@ -85,8 +82,8 @@
                 >
                   <i class="bi bi-search dropdown-search-icon"></i>
                 </button>
-              </div>
-              <div class="dropdown-items-ingredients"></div>
+              </li>
+              <li class="dropdown-items-ingredients"></li>
             </ul>
           </div>
           <div class="dropdown">
@@ -98,7 +95,7 @@
               Appareils <i class="bi bi-chevron-down"></i>
             </button>
             <ul class="dropdown-menu">
-              <div class="search-bar-dropdown">
+              <li class="search-bar-dropdown">
                 <input
                   type="text"
                   id="search-input-appliances"
@@ -120,8 +117,8 @@
                 >
                   <i class="bi bi-search dropdown-search-icon"></i>
                 </button>
-              </div>
-              <div class="dropdown-items-appliances"></div>
+              </li>
+              <li class="dropdown-items-appliances"></li>
             </ul>
           </div>
           <div class="dropdown">
@@ -133,7 +130,7 @@
               Ustensiles <i class="bi bi-chevron-down"></i>
             </button>
             <ul class="dropdown-menu">
-              <div class="search-bar-dropdown">
+              <li class="search-bar-dropdown">
                 <input
                   type="text"
                   id="search-input-ustensils"
@@ -155,12 +152,12 @@
                 >
                   <i class="bi bi-search dropdown-search-icon"></i>
                 </button>
-              </div>
-              <div class="dropdown-items-ustensils"></div>
+              </li>
+              <li class="dropdown-items-ustensils"></li>
             </ul>
           </div>
         </div>
-        <span class="subtitle" alt="">1500 recettes</span>
+        <span class="subtitle">1500 recettes</span>
       </div>
       <div class="tags-container"></div>
       <div class="recipes-container"></div>

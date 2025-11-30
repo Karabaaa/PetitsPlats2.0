@@ -34,13 +34,13 @@ const dropdownConfigs = [
 function setupDropdownSearchAndFill(currentRecipes) {
   dropdownConfigs.forEach(
     ({ inputSelector, dropdownSelector, getAllItems, category }) => {
-      // Initial fill
+      // Initialisation des filtres
       populateDropdownItems(
         dropdownSelector,
         getUniqueSortedList(getAllItems(currentRecipes)),
         category
       );
-      // Search/filter
+      // mise à jour des filtres en fonction de la recherche
       const input = document.querySelector(inputSelector);
       input.addEventListener("input", (e) => {
         const value = e.target.value.toLowerCase();
@@ -55,7 +55,7 @@ function setupDropdownSearchAndFill(currentRecipes) {
 
 function populateDropdownItems(selector, items, category) {
   const container = document.querySelector(selector);
-  container.innerHTML = ""; // Vide le container avant d'ajouter
+  container.innerHTML = "";
   items.forEach((item) => {
     const li = document.createElement("li");
     li.classList.add("dropdown-item");
@@ -130,7 +130,7 @@ function updateRecipeCount(count) {
   subtitle.textContent = `${displayCount} recette${count === 1 ? "" : "s"}`;
 }
 
-// Animation couleur bouton recherche + recherche explicite
+// recherche explicite
 searchButton.addEventListener("click", function () {
   runSearch(searchInput.value);
 });
