@@ -114,11 +114,21 @@ async function init() {
 function runSearch(query) {
   const filteredRecipes = getFilteredRecipes(recipes, query, selectedTags);
   recipesContainer.innerHTML = "";
-  filteredRecipes.forEach((recipe) => {
-    const recipeModel = recipeTemplate(recipe);
-    const recipeCard = recipeModel.getRecipeCardDOM();
-    recipesContainer.innerHTML += recipeCard;
-  });
+  const noResultsContainer = document.querySelector(".no-results-container");
+  noResultsContainer.innerHTML = "";
+  if (filteredRecipes.length === 0) {
+    const message = `Aucune recette ne contient '${query}' vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
+    const noResultElement = document.createElement("p");
+    noResultElement.classList.add("no-results-message");
+    noResultElement.textContent = message;
+    noResultsContainer.appendChild(noResultElement);
+  } else {
+    filteredRecipes.forEach((recipe) => {
+      const recipeModel = recipeTemplate(recipe);
+      const recipeCard = recipeModel.getRecipeCardDOM();
+      recipesContainer.innerHTML += recipeCard;
+    });
+  }
   updateRecipeCount(filteredRecipes.length);
   setupDropdownSearchAndFill(filteredRecipes);
 }

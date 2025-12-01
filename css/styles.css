@@ -399,3 +399,16 @@ article h4 {
 .dropdown-tag-remove {
   cursor: pointer;
 }
+
+.no-results-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.no-results-message {
+  text-align: center;
+  margin-top: 50px;
+  max-width: 700px;
+  width: 100%;
+}
